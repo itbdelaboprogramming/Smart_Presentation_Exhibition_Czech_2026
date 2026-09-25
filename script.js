@@ -17,6 +17,7 @@ import {
 } from "three/addons/renderers/CSS2DRenderer.js";
 import { FontLoader } from "three/addons/loaders/FontLoader.js";
 import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
+import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
 import { DEFAULT_VIEW } from "./js/recyclingPlantAnnotations.js";
 
 // ----------------------------------- SCENE BACKGROUND COLOR -----------------------------------
@@ -57,13 +58,13 @@ scene.add(grid);
 const ambientLight = new THREE.HemisphereLight(
 	"white", // bright sky color
 	"grey", // dim ground color
-	0.5 // intensity
+	0 // intensity (off by default; the environment map lights the model)
 );
 ambientLight.name = "ambientLight";
 scene.add(ambientLight);
 
 // ----------------------------------- LIGHTNING: DIRECTIONAL -----------------------------------
-var dirLight = new THREE.DirectionalLight(0x404040, 20);
+var dirLight = new THREE.DirectionalLight(0x404040, 0);
 dirLight.name = "dirLight";
 dirLight.position.set(100, 100, -10);
 dirLight.castShadow = true;
@@ -97,6 +98,11 @@ export const renderer = new THREE.WebGLRenderer({ canvas: myCanvas });
 renderer.setClearColor(0xff0000, 1.0);
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(myCanvas.offsetWidth, myCanvas.offsetHeight);
+
+// ------------------------------------- ENVIRONMENT (IBL) --------------------------------------
+const pmremGenerator = new THREE.PMREMGenerator(renderer);
+scene.environment = pmremGenerator.fromScene(new RoomEnvironment(), 0.04).texture;
+pmremGenerator.dispose();
 
 // --------------------------------------- ORBIT CONTROLS ---------------------------------------
 const labelRenderer = new CSS2DRenderer();

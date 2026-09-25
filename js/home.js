@@ -930,18 +930,18 @@ function updateLightning(opsi_text) {
 			lightning_expand.style.height = "230px";
 		}
 
-		ambientLight.intensity = 0.5;
-		dirLight.intensity = 20;
+		ambientLight.intensity = 0;
+		dirLight.intensity = 0;
 
 		light1.intensity = 0;
 		light2.intensity = 0;
 		light3.intensity = 0;
 		light4.intensity = 0;
 
-		slider_env.value = 0.5;
+		slider_env.value = 0;
 		updateSliderEnv();
 		updateEnvBrightness();
-		slider_lamp.value = 20;
+		slider_lamp.value = 0;
 		updateSliderLamp();
 		updateLamp();
 		slider_lamp_pos.value = 210;
@@ -951,8 +951,8 @@ function updateLightning(opsi_text) {
 		custom_lightning.style.display = "none";
 		lightning_expand.style.height = "190px";
 
-		ambientLight.intensity = 0.5;
-		dirLight.intensity = 20;
+		ambientLight.intensity = 0;
+		dirLight.intensity = 0;
 		dirLight.position.set(100, 100, -10);
 
 		light1.intensity = 0;
