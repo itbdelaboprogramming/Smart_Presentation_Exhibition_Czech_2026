@@ -1329,7 +1329,7 @@ canvas {
 	gap: 6px;
 	padding: 14px;
 	width: 300px;
-	max-height: 50vh;
+	height: 50vh;
 	overflow-y: auto;
 	background: linear-gradient(
 		180deg,
@@ -1382,6 +1382,86 @@ canvas {
 	flex: 1;
 	height: 1px;
 	background: rgba(24, 154, 180, 0.15);
+}
+
+.rp-list-top {
+	position: sticky;
+	top: -14px;
+	z-index: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	margin: -14px -14px 0;
+	padding: 14px 14px 10px;
+	background: #f7fbfc;
+	border-bottom: 1px solid rgba(24, 154, 180, 0.15);
+}
+
+.rp-list-top .rp-list-header {
+	padding: 2px 4px 0;
+	border-bottom: none;
+	margin-bottom: 0;
+}
+
+.rp-list-filter {
+	display: flex;
+	padding: 3px;
+	gap: 3px;
+	background: rgba(24, 154, 180, 0.1);
+	border-radius: 5px;
+	user-select: none;
+}
+
+.rp-list-filter button {
+	flex: 1;
+	padding: 7px 8px;
+	border: none;
+	border-radius: 3px;
+	background: transparent;
+	color: var(--primary-color-200);
+	font-family: "Ubuntu";
+	font-weight: 700;
+	font-size: 12px;
+	letter-spacing: 0.3px;
+	text-transform: uppercase;
+	white-space: nowrap;
+	cursor: pointer;
+	transition: background-color 0.2s, color 0.2s;
+}
+
+.rp-list-filter button:hover {
+	background: rgba(4, 68, 95, 0.08);
+}
+
+.rp-list-filter button.active {
+	background: var(--primary-color-200);
+	color: #fff;
+}
+
+.rp-list-filter button:focus-visible {
+	outline: 2px solid var(--primary-color-100);
+	outline-offset: 1px;
+}
+
+.rp-list-popup.rp-filtered .rp-list-group {
+	display: none;
+}
+
+.rp-list-section {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+
+.rp-hidden {
+	display: none !important;
+}
+
+.rp-marker-hidden {
+	opacity: 0 !important;
+	visibility: hidden;
+	pointer-events: none;
+	transition: opacity 0.3s ease, visibility 0s linear 0.3s !important;
 }
 
 .rp-list-item {

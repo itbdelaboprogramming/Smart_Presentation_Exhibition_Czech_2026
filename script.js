@@ -143,7 +143,7 @@ loadingManager.onLoad = function () {
 export const loader = new GLTFLoader(loadingManager);
 loader.name = "loader";
 
-let path = "files/" + "NAS1200T_NE100JP_2.glb";
+let path = "files/" + "NAS1200T_NE100JP_2_draco.glb";
 
 const dracoLoader = new DRACOLoader();
 dracoLoader.setDecoderPath(DRACO_PATH);

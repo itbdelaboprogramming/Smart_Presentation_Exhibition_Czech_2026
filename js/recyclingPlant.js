@@ -44,6 +44,8 @@ let hoveredId = null;
 
 // id -> { listItem, dot?, dotEl?, label?, labelEl?, line?, anchor?, labelOffset? }
 const markerEntries = new Map();
+const groupSections = new Map();
+let groupFilter = null;
 
 if (infoPopupClose) {
 	infoPopupClose.addEventListener("click", closeInfoPopup);
@@ -146,7 +148,7 @@ function updateOcclusion(now) {
 	if (!file3D) return;
 
 	markerEntries.forEach((entry) => {
-		if (!entry.anchor || !entry.dotEl) return;
+		if (!entry.anchor || !entry.dotEl || !isShown(entry.ann)) return;
 
 		const worldAnchor = file3D.localToWorld(entry.anchor.clone());
 		const ndc = worldAnchor.clone().project(camera);
@@ -232,20 +234,39 @@ function createMarkersAndList() {
 	const file3D = getFile3D();
 	const sorted = [...annotationsData].sort((a, b) => a.order - b.order);
 
-	const header = document.createElement("div");
-	header.className = "rp-list-header";
-	header.dataset.i18n = "annotations.header";
-	header.textContent = t("annotations.header");
-	listPopup.appendChild(header);
+	const groups = [...new Set(sorted.map((ann) => ann.group).filter(Boolean))];
 
-	let currentGroup = null;
+	const top = document.createElement("div");
+	top.className = "rp-list-top";
+	top.innerHTML = `<div class="rp-list-header" data-i18n="annotations.header">${t("annotations.header")}</div>`;
+	if (groups.length > 1) {
+		const filter = document.createElement("div");
+		filter.className = "rp-list-filter";
+		filter.innerHTML = [
+			`<button type="button" class="active" data-i18n="annotations.all">${t("annotations.all")}</button>`,
+			...groups.map((group) => `<button type="button" data-group="${group}">${group}</button>`),
+		].join("");
+		filter.addEventListener("click", (event) => {
+			const button = event.target.closest("button");
+			if (!button) return;
+			filter.querySelectorAll("button").forEach((el) => el.classList.toggle("active", el === button));
+			setGroupFilter(button.dataset.group ?? null);
+		});
+		top.appendChild(filter);
+	}
+	listPopup.appendChild(top);
+
 	sorted.forEach((ann) => {
-		if (ann.group && ann.group !== currentGroup) {
-			currentGroup = ann.group;
-			const groupHeader = document.createElement("div");
-			groupHeader.className = "rp-list-group";
-			groupHeader.textContent = ann.group;
-			listPopup.appendChild(groupHeader);
+		let parent = listPopup;
+		if (ann.group) {
+			if (!groupSections.has(ann.group)) {
+				const section = document.createElement("div");
+				section.className = "rp-list-section";
+				section.innerHTML = `<div class="rp-list-group">${ann.group}</div>`;
+				listPopup.appendChild(section);
+				groupSections.set(ann.group, section);
+			}
+			parent = groupSections.get(ann.group);
 		}
 
 		const item = document.createElement("div");
@@ -259,7 +280,7 @@ function createMarkersAndList() {
 			</span>
 		`;
 		item.addEventListener("click", () => onAnnotationPicked(ann.id));
-		listPopup.appendChild(item);
+		parent.appendChild(item);
 
 		const entry = { ann, listItem: item, titleEls: [item.querySelector(".rp-list-item-title")] };
 
@@ -316,6 +337,22 @@ function createMarkersAndList() {
 	});
 }
 
+function isShown(ann) {
+	return !groupFilter || ann.group === groupFilter;
+}
+
+function setGroupFilter(group) {
+	groupFilter = group;
+	listPopup.classList.toggle("rp-filtered", !!group);
+	listPopup.scrollTop = 0;
+	groupSections.forEach((section, key) => section.classList.toggle("rp-hidden", !!group && key !== group));
+	markerEntries.forEach((entry) => {
+		const hidden = !isShown(entry.ann);
+		[entry.dotEl, entry.labelEl, entry.line].forEach((el) => el?.classList.toggle("rp-marker-hidden", hidden));
+	});
+	if (focusedId && !isShown(markerEntries.get(focusedId).ann)) clearFocus();
+}
+
 function renderTitles(entry) {
 	const title = localize(entry.ann.title);
 	entry.titleEls.forEach((el) => (el.textContent = title));
@@ -330,6 +367,9 @@ function removeAllMarkers() {
 		if (entry.line) leaderLineSvg.removeChild(entry.line);
 	});
 	markerEntries.clear();
+	groupFilter = null;
+	groupSections.clear();
+	listPopup.classList.remove("rp-filtered");
 	listPopup.innerHTML = "";
 }
 
@@ -589,7 +629,9 @@ export function deactivateRecyclingPlant() {
 // ------------------------------------------- tour api -------------------------------------------
 
 export function getTourStops() {
-	return annotationsData.filter(isFlyable).sort((a, b) => a.order - b.order);
+	return annotationsData
+		.filter((ann) => isFlyable(ann) && isShown(ann))
+		.sort((a, b) => a.order - b.order);
 }
 
 export function getFocusedId() {
