@@ -43,7 +43,7 @@
                     <img class="menu-video" src="./assets/Video.svg">
                 </div>
                 <div class="page-name-container">
-                    <div class="page-name-text" data-i18n="page.name">Nakayama ZNS Plant</div>
+                    <div class="page-name-text" data-i18n="page.name">Nakayama NE100JP + NAS1200T</div>
                 </div>
             </div>
 

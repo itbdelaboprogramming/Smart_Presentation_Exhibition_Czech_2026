@@ -1,6 +1,6 @@
 export default {
 	en: {
-		"page.name": "Nakayama ZNS Plant",
+		"page.name": "Nakayama NE100JP + NAS1200T",
 		"loading": "Loading...",
 		"menu.animation": "Animation",
 		"sound.music": "Music",
@@ -22,7 +22,7 @@ export default {
 		"media.video": "Videos",
 	},
 	ja: {
-		"page.name": "中山鉄工所 ZNSプラント",
+		"page.name": "中山鉄工所 NE100JP + NAS1200T",
 		"loading": "読み込み中...",
 		"menu.animation": "アニメーション",
 		"sound.music": "音楽",

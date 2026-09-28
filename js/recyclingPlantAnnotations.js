@@ -1,5 +1,5 @@
 export const DEFAULT_VIEW = {
-	position: { x: 9, y: 8.5, z: -12.5 },
+	position: { x: 8.5, y: 5.5, z: -7.5 },
 	target: { x: 0.6, y: 1.2, z: -3.5 },
 };
 
@@ -431,8 +431,8 @@ const annotations =
     "order": 3,
     "group": "NE100JP",
     "title": {
-      "en": "JAW CRUSHER",
-      "ja": "ジョークラッシャ"
+      "en": "JAW CRUSHER (AC2415)",
+      "ja": "ジョークラッシャ (AC2415)"
     },
     "anchor": {
       "x": -0.007,
@@ -703,6 +703,11 @@ const annotations =
           {
             "type": "text",
             "value": "<small>*Adjust the discharge setting to a wider range when crushing asphalt material.</small>"
+          },
+          {
+            "type": "video",
+            "src": "./files/ジョークラッシャ_13s_RC4228.mp4",
+            "label": "Watch: NE100JP in Operation"
           }
         ]
       },
@@ -751,6 +756,11 @@ const annotations =
           {
             "type": "text",
             "value": "<small>※アスファルト破砕時は排出口の設定を広めに調整してください。</small>"
+          },
+          {
+            "type": "video",
+            "src": "./files/ジョークラッシャ_13s_RC4228.mp4",
+            "label": "動画：NE100JP の稼働状況"
           }
         ]
       }
@@ -758,10 +768,10 @@ const annotations =
   },
   {
     "id": "ne100jp-belt-conveyor",
-    "order": 4,
+    "order": 9,
     "group": "NE100JP",
     "title": {
-      "en": "BELT CONVEYOR",
+      "en": "BELT CONVEYOR (OUTPUT)",
       "ja": "ベルトコンベヤ"
     },
     "anchor": {
@@ -1215,11 +1225,11 @@ const annotations =
   },
   {
     "id": "ne100jp-engine",
-    "order": 5,
+    "order": 4,
     "group": "NE100JP",
     "title": {
-      "en": "ENGINE (TRAVEL)",
-      "ja": "エンジン（走行用）"
+      "en": "ENGINE (TRAVEL) + FUEL TANK",
+      "ja": "エンジン（走行用）+ 燃料タンク"
     },
     "anchor": {
       "x": -1.258,
@@ -1310,7 +1320,7 @@ const annotations =
         "blocks": [
           {
             "type": "heading",
-            "value": "Engine (Travel)"
+            "value": "Engine (Travel) + Fuel Tank"
           },
           {
             "type": "text",
@@ -1335,6 +1345,31 @@ const annotations =
             "type": "image",
             "src": "./files/annotations/ne100jp-power-sources.png",
             "caption": "Power sources — commercial power or generator"
+          },
+          {
+            "type": "heading",
+            "value": "Low Fuel Consumption, Low CO₂"
+          },
+          {
+            "type": "text",
+            "value": "The electric-drive crusher has lower fuel consumption, which resulted in a drastic reduction of CO₂ emissions compared with our hydraulic-drive crusher."
+          },
+          {
+            "type": "image",
+            "src": "./files/annotations/ne100jp-co2.png",
+            "caption": "CO₂ emissions per hour: NE100JP vs. hydraulic-drive crusher"
+          },
+          {
+            "type": "list",
+            "items": [
+              "MC240G (diesel hydraulic drive): <b>0.02064</b> t-CO₂/h",
+              "NE100JP (diesel generator drive): <b>0.01548</b> t-CO₂/h — <b>25% down</b>",
+              "NE100JP (commercial power supply): <b>0.01229</b> t-CO₂/h — <b>40% down</b>"
+            ]
+          },
+          {
+            "type": "text",
+            "value": "<small>*Figures are for reference only and may vary depending on operating conditions.</small>"
           }
         ]
       },
@@ -1342,7 +1377,7 @@ const annotations =
         "blocks": [
           {
             "type": "heading",
-            "value": "エンジン（走行用）"
+            "value": "エンジン（走行用）+ 燃料タンク"
           },
           {
             "type": "text",
@@ -1367,6 +1402,31 @@ const annotations =
             "type": "image",
             "src": "./files/annotations/ne100jp-power-sources.png",
             "caption": "電源 — 商用電源または発電機"
+          },
+          {
+            "type": "heading",
+            "value": "低燃費・低CO₂"
+          },
+          {
+            "type": "text",
+            "value": "電動駆動のクラッシャは燃料消費量が少なく、当社の油圧駆動クラッシャと比べてCO₂排出量を大幅に削減しました。"
+          },
+          {
+            "type": "image",
+            "src": "./files/annotations/ne100jp-co2.png",
+            "caption": "1時間あたりのCO₂排出量：NE100JP と油圧駆動クラッシャの比較"
+          },
+          {
+            "type": "list",
+            "items": [
+              "MC240G（ディーゼル油圧駆動）：<b>0.02064</b> t-CO₂/h",
+              "NE100JP（ディーゼル発電機駆動）：<b>0.01548</b> t-CO₂/h — <b>25%削減</b>",
+              "NE100JP（商用電源）：<b>0.01229</b> t-CO₂/h — <b>40%削減</b>"
+            ]
+          },
+          {
+            "type": "text",
+            "value": "<small>※数値は参考値であり、稼働条件により異なる場合があります。</small>"
           }
         ]
       }
@@ -1545,140 +1605,140 @@ const annotations =
       }
     }
   },
-  {
-    "id": "ne100jp-fuel-tank",
-    "order": 7,
-    "group": "NE100JP",
-    "title": {
-      "en": "FUEL TANK",
-      "ja": "燃料タンク"
-    },
-    "anchor": {
-      "x": -1.239,
-      "y": 1.37,
-      "z": -8.027
-    },
-    "labelOffset": {
-      "x": -1.239,
-      "y": 2.07,
-      "z": -8.027
-    },
-    "camera": {
-      "position": {
-        "x": -2.878,
-        "y": 1.944,
-        "z": -8.682
-      },
-      "target": {
-        "x": -0.935,
-        "y": 1.264,
-        "z": -7.905
-      },
-      "duration": 1.8
-    },
-    "meshNames": [
-      "·û`Ç___060_X_30_X_32(1)",
-      "ÎÞ½_-_µoµ1_(4)",
-      "ÎÞ½_-_µoµ2_(4)",
-      "Ð×°11_(1)",
-      "Ð×°12_(1)",
-      "·û`Ç___060_X_30_X_32(1)_(3)",
-      "ÎÞ½_-_µoµ1_(7)",
-      "ÎÞ½_-_µoµ2_(8)",
-      "Ð×°11_(4)",
-      "Ð×°12_(4)",
-      "·û`Ç___060_X_30_X_32(1)_(1)",
-      "ÎÞ½_-_µoµ1_(5)",
-      "ÎÞ½_-_µoµ2_(5)",
-      "Ð×°11_(2)",
-      "Ð×°12_(2)",
-      "·û`Ç___060_X_30_X_32(1)_(2)",
-      "Êæè1_(2)",
-      "ÎÞ½_-_µoµ1_(6)",
-      "ÎÞ½_-_µoµ2_(6)",
-      "Ð×°11_(3)",
-      "Ð×°12_(3)",
-      "<MZFB632A>-<·û`Ç___060_X_30_X_32(1)>",
-      "<MZFB632A>-<Êæè1>",
-      "<MZFB632A>-<ÎÞ½_-_µoµ1>",
-      "<MZFB632A>-<ÎÞ½_-_µoµ2>",
-      "<MZFB632A>-<Ð×°11>",
-      "<MZFB632A>-<Ð×°12>",
-      "¼üÊßÀ°Ý12_(2)",
-      "Êæè1_(3)",
-      "¼üÊßÀ°Ý12_(3)",
-      "Êæè1_(4)",
-      "M10_·«Ü1",
-      "Ì¨Ú¯Ä1",
-      "ÎÞ½_-_µoµ2_(7)",
-      "ñ1",
-      "Êæè1_(5)",
-      "Ì¨Ú¯Ä4"
-    ],
-    "popup": {
-      "en": {
-        "blocks": [
-          {
-            "type": "heading",
-            "value": "Low Fuel Consumption, Low CO₂"
-          },
-          {
-            "type": "text",
-            "value": "The electric-drive crusher has lower fuel consumption, which resulted in a drastic reduction of CO₂ emissions compared with our hydraulic-drive crusher."
-          },
-          {
-            "type": "image",
-            "src": "./files/annotations/ne100jp-co2.png",
-            "caption": "CO₂ emissions per hour: NE100JP vs. hydraulic-drive crusher"
-          },
-          {
-            "type": "list",
-            "items": [
-              "MC240G (diesel hydraulic drive): <b>0.02064</b> t-CO₂/h",
-              "NE100JP (diesel generator drive): <b>0.01548</b> t-CO₂/h — <b>25% down</b>",
-              "NE100JP (commercial power supply): <b>0.01229</b> t-CO₂/h — <b>40% down</b>"
-            ]
-          },
-          {
-            "type": "text",
-            "value": "<small>*Figures are for reference only and may vary depending on operating conditions.</small>"
-          }
-        ]
-      },
-      "ja": {
-        "blocks": [
-          {
-            "type": "heading",
-            "value": "低燃費・低CO₂"
-          },
-          {
-            "type": "text",
-            "value": "電動駆動のクラッシャは燃料消費量が少なく、当社の油圧駆動クラッシャと比べてCO₂排出量を大幅に削減しました。"
-          },
-          {
-            "type": "image",
-            "src": "./files/annotations/ne100jp-co2.png",
-            "caption": "1時間あたりのCO₂排出量：NE100JP と油圧駆動クラッシャの比較"
-          },
-          {
-            "type": "list",
-            "items": [
-              "MC240G（ディーゼル油圧駆動）：<b>0.02064</b> t-CO₂/h",
-              "NE100JP（ディーゼル発電機駆動）：<b>0.01548</b> t-CO₂/h — <b>25%削減</b>",
-              "NE100JP（商用電源）：<b>0.01229</b> t-CO₂/h — <b>40%削減</b>"
-            ]
-          },
-          {
-            "type": "text",
-            "value": "<small>※数値は参考値であり、稼働条件により異なる場合があります。</small>"
-          }
-        ]
-      }
-    }
-  },
+  // {
+  //   "id": "ne100jp-fuel-tank",
+  //   "order": 7,
+  //   "group": "NE100JP",
+  //   "title": {
+  //     "en": "FUEL TANK",
+  //     "ja": "燃料タンク"
+  //   },
+  //   "anchor": {
+  //     "x": -1.239,
+  //     "y": 1.37,
+  //     "z": -8.027
+  //   },
+  //   "labelOffset": {
+  //     "x": -1.239,
+  //     "y": 2.07,
+  //     "z": -8.027
+  //   },
+  //   "camera": {
+  //     "position": {
+  //       "x": -2.878,
+  //       "y": 1.944,
+  //       "z": -8.682
+  //     },
+  //     "target": {
+  //       "x": -0.935,
+  //       "y": 1.264,
+  //       "z": -7.905
+  //     },
+  //     "duration": 1.8
+  //   },
+  //   "meshNames": [
+  //     "·û`Ç___060_X_30_X_32(1)",
+  //     "ÎÞ½_-_µoµ1_(4)",
+  //     "ÎÞ½_-_µoµ2_(4)",
+  //     "Ð×°11_(1)",
+  //     "Ð×°12_(1)",
+  //     "·û`Ç___060_X_30_X_32(1)_(3)",
+  //     "ÎÞ½_-_µoµ1_(7)",
+  //     "ÎÞ½_-_µoµ2_(8)",
+  //     "Ð×°11_(4)",
+  //     "Ð×°12_(4)",
+  //     "·û`Ç___060_X_30_X_32(1)_(1)",
+  //     "ÎÞ½_-_µoµ1_(5)",
+  //     "ÎÞ½_-_µoµ2_(5)",
+  //     "Ð×°11_(2)",
+  //     "Ð×°12_(2)",
+  //     "·û`Ç___060_X_30_X_32(1)_(2)",
+  //     "Êæè1_(2)",
+  //     "ÎÞ½_-_µoµ1_(6)",
+  //     "ÎÞ½_-_µoµ2_(6)",
+  //     "Ð×°11_(3)",
+  //     "Ð×°12_(3)",
+  //     "<MZFB632A>-<·û`Ç___060_X_30_X_32(1)>",
+  //     "<MZFB632A>-<Êæè1>",
+  //     "<MZFB632A>-<ÎÞ½_-_µoµ1>",
+  //     "<MZFB632A>-<ÎÞ½_-_µoµ2>",
+  //     "<MZFB632A>-<Ð×°11>",
+  //     "<MZFB632A>-<Ð×°12>",
+  //     "¼üÊßÀ°Ý12_(2)",
+  //     "Êæè1_(3)",
+  //     "¼üÊßÀ°Ý12_(3)",
+  //     "Êæè1_(4)",
+  //     "M10_·«Ü1",
+  //     "Ì¨Ú¯Ä1",
+  //     "ÎÞ½_-_µoµ2_(7)",
+  //     "ñ1",
+  //     "Êæè1_(5)",
+  //     "Ì¨Ú¯Ä4"
+  //   ],
+  //   "popup": {
+  //     "en": {
+  //       "blocks": [
+  //         {
+  //           "type": "heading",
+  //           "value": "Low Fuel Consumption, Low CO₂"
+  //         },
+  //         {
+  //           "type": "text",
+  //           "value": "The electric-drive crusher has lower fuel consumption, which resulted in a drastic reduction of CO₂ emissions compared with our hydraulic-drive crusher."
+  //         },
+  //         {
+  //           "type": "image",
+  //           "src": "./files/annotations/ne100jp-co2.png",
+  //           "caption": "CO₂ emissions per hour: NE100JP vs. hydraulic-drive crusher"
+  //         },
+  //         {
+  //           "type": "list",
+  //           "items": [
+  //             "MC240G (diesel hydraulic drive): <b>0.02064</b> t-CO₂/h",
+  //             "NE100JP (diesel generator drive): <b>0.01548</b> t-CO₂/h — <b>25% down</b>",
+  //             "NE100JP (commercial power supply): <b>0.01229</b> t-CO₂/h — <b>40% down</b>"
+  //           ]
+  //         },
+  //         {
+  //           "type": "text",
+  //           "value": "<small>*Figures are for reference only and may vary depending on operating conditions.</small>"
+  //         }
+  //       ]
+  //     },
+  //     "ja": {
+  //       "blocks": [
+  //         {
+  //           "type": "heading",
+  //           "value": "低燃費・低CO₂"
+  //         },
+  //         {
+  //           "type": "text",
+  //           "value": "電動駆動のクラッシャは燃料消費量が少なく、当社の油圧駆動クラッシャと比べてCO₂排出量を大幅に削減しました。"
+  //         },
+  //         {
+  //           "type": "image",
+  //           "src": "./files/annotations/ne100jp-co2.png",
+  //           "caption": "1時間あたりのCO₂排出量：NE100JP と油圧駆動クラッシャの比較"
+  //         },
+  //         {
+  //           "type": "list",
+  //           "items": [
+  //             "MC240G（ディーゼル油圧駆動）：<b>0.02064</b> t-CO₂/h",
+  //             "NE100JP（ディーゼル発電機駆動）：<b>0.01548</b> t-CO₂/h — <b>25%削減</b>",
+  //             "NE100JP（商用電源）：<b>0.01229</b> t-CO₂/h — <b>40%削減</b>"
+  //           ]
+  //         },
+  //         {
+  //           "type": "text",
+  //           "value": "<small>※数値は参考値であり、稼働条件により異なる場合があります。</small>"
+  //         }
+  //       ]
+  //     }
+  //   }
+  // }
   {
     "id": "ne100jp-hydraulic-oil-tank",
-    "order": 8,
+    "order": 5,
     "group": "NE100JP",
     "title": {
       "en": "HYDRAULIC OIL TANK",
@@ -1809,7 +1869,7 @@ const annotations =
   },
   {
     "id": "ne100jp-crawler",
-    "order": 9,
+    "order": 7,
     "group": "NE100JP",
     "title": {
       "en": "CRAWLER",
@@ -1903,7 +1963,7 @@ const annotations =
   },
   {
     "id": "ne100jp-magnetic-separator",
-    "order": 10,
+    "order": 8,
     "group": "NE100JP",
     "title": {
       "en": "MAGNETIC SEPARATOR",
@@ -2013,10 +2073,10 @@ const annotations =
   },
   {
     "id": "nas1200t-belt-conveyor",
-    "order": 11,
+    "order": 15,
     "group": "NAS1200T",
     "title": {
-      "en": "BELT CONVEYOR",
+      "en": "BELT CONVEYOR (OUTPUT)",
       "ja": "ベルトコンベヤ"
     },
     "anchor": {
@@ -4113,7 +4173,7 @@ const annotations =
   },
   {
     "id": "nas1200t-control-panel",
-    "order": 12,
+    "order": 14,
     "group": "NAS1200T",
     "title": {
       "en": "CONTROL PANEL",
@@ -4248,7 +4308,7 @@ const annotations =
   },
   {
     "id": "nas1200t-screen",
-    "order": 13,
+    "order": 10,
     "group": "NAS1200T",
     "title": {
       "en": "SCREEN (NRE4101)",
@@ -4392,6 +4452,11 @@ const annotations =
             "type": "image",
             "src": "./files/annotations/nas1200t-screen-photos.png",
             "caption": "Screen <b>NRE4101</b>"
+          },
+          {
+            "type": "video",
+            "src": "./files/スクリーン_NSR5142.mp4",
+            "label": "Watch: NAS1200T in Operation"
           }
         ]
       },
@@ -4417,6 +4482,11 @@ const annotations =
             "type": "image",
             "src": "./files/annotations/nas1200t-screen-photos.png",
             "caption": "スクリーン <b>NRE4101</b>"
+          },
+          {
+            "type": "video",
+            "src": "./files/スクリーン_NSR5142.mp4",
+            "label": "動画：NAS1200T の稼働状況"
           }
         ]
       }
@@ -4424,7 +4494,7 @@ const annotations =
   },
   {
     "id": "nas1200t-suction-air-separator",
-    "order": 14,
+    "order": 11,
     "group": "NAS1200T",
     "title": {
       "en": "SUCTION AIR SEPARATOR (AS1200)",
@@ -5655,7 +5725,7 @@ const annotations =
   },
   {
     "id": "nas1200t-axial-flow-cyclone",
-    "order": 15,
+    "order": 12,
     "group": "NAS1200T",
     "title": {
       "en": "AXIAL FLOW CYCLONE (TC15)",
@@ -5929,7 +5999,7 @@ const annotations =
   },
   {
     "id": "nas1200t-blower",
-    "order": 16,
+    "order": 13,
     "group": "NAS1200T",
     "title": {
       "en": "BLOWER",

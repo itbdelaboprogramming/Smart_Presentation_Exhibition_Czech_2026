@@ -9,11 +9,13 @@ import { scene, camera, renderer, setRenderOverride } from "../script.js";
 const CHANNELS = {
 	highlight: {
 		color: 0x05485a,
+		// color: 0xff7582,
 		hiddenColor: 0x05485a,
+		// hiddenColor: 0xff7582,
 		edgeStrength: 15,
-		edgeGlow: 0.0,
-		edgeThickness: 3,
-		pulsePeriod: 0,
+		edgeGlow: 5.0,
+		edgeThickness: 15,
+		pulsePeriod: 3,
 	},
 	group: { color: 0x2fbf71, edgeStrength: 3, edgeGlow: 0.3, edgeThickness: 1.5, pulsePeriod: 0 },
 	select: { color: 0xffa500, edgeStrength: 6, edgeGlow: 0.8, edgeThickness: 2, pulsePeriod: 0 },
