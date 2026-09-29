@@ -14,14 +14,14 @@ const annotations =
       "ja": "フィードホッパ"
     },
     "anchor": {
-      "x": -0.859,
-      "y": 2.18,
-      "z": -8.046
+      "x": -1.559,
+      "y": 2.18+0.5,
+      "z": -9.046
     },
     "labelOffset": {
-      "x": -0.859,
-      "y": 2.88,
-      "z": -8.046
+      "x": -1.559,
+      "y": 2.88+0.5,
+      "z": -9.046
     },
     "camera": {
       "position": {
@@ -67,106 +67,106 @@ const annotations =
     "popup": {
       "en": {
         "blocks": [
-          {
-            "type": "heading",
-            "value": "NE100JP Eco Plug-in Mobile Crusher"
-          },
-          {
-            "type": "text",
-            "value": "Our electric crusher overcomes challenges where diesel crushers face limitations. Construction debris is loaded into the feed hopper, where the crushing process begins."
-          },
-          {
-            "type": "image",
-            "src": "./files/annotations/ne100jp-overview.jpg",
-            "caption": "<b>NE100JP</b> — Think Big, Start Small, Grow Fast"
-          },
-          {
-            "type": "heading",
-            "value": "Ideal For"
-          },
-          {
-            "type": "list",
-            "items": [
-              "Noise-sensitive urban areas",
-              "Underground construction sites",
-              "Zero-emission initiatives",
-              "Eco-friendly construction projects",
-              "Indoor worksites with strict noise and emission regulations",
-              "Early morning and nighttime operations"
-            ]
-          },
-          {
-            "type": "heading",
-            "value": "Crushing Applications"
-          },
-          {
-            "type": "image",
-            "src": "./files/annotations/ne100jp-applications.png",
-            "caption": "Concrete, asphalt, rocks and bricks"
-          },
-          {
-            "type": "list",
-            "items": [
-              "Crushing capacity: <b>15–50 t/h</b>",
-              "Max. feed size (T×W×L): <b>265 × 330 × 600 mm</b>"
-            ]
-          },
+          // {
+          //   "type": "heading",
+          //   "value": "NE100JP Eco Plug-in Mobile Crusher"
+          // },
           {
             "type": "text",
-            "value": "<small>*Processing capacity varies based on raw material quality, grain size and input volume.</small>"
-          }
+            "value": "Input or construction debris is loaded into the feed hopper, where the crushing process begins."
+          },
+          // {
+          //   "type": "image",
+          //   "src": "./files/annotations/ne100jp-overview.jpg",
+          //   "caption": "<b>NE100JP</b> — Think Big, Start Small, Grow Fast"
+          // },
+          // {
+          //   "type": "heading",
+          //   "value": "Ideal For"
+          // },
+          // {
+          //   "type": "list",
+          //   "items": [
+          //     "Noise-sensitive urban areas",
+          //     "Underground construction sites",
+          //     "Zero-emission initiatives",
+          //     "Eco-friendly construction projects",
+          //     "Indoor worksites with strict noise and emission regulations",
+          //     "Early morning and nighttime operations"
+          //   ]
+          // },
+          // {
+          //   "type": "heading",
+          //   "value": "Crushing Applications"
+          // },
+          // {
+          //   "type": "image",
+          //   "src": "./files/annotations/ne100jp-applications.png",
+          //   "caption": "Concrete, asphalt, rocks and bricks"
+          // },
+          // {
+          //   "type": "list",
+          //   "items": [
+          //     "Crushing capacity: <b>15–50 t/h</b>",
+          //     "Max. feed size (T×W×L): <b>265 × 330 × 600 mm</b>"
+          //   ]
+          // },
+          // {
+          //   "type": "text",
+          //   "value": "<small>*Processing capacity varies based on raw material quality, grain size and input volume.</small>"
+          // }
         ]
       },
       "ja": {
         "blocks": [
-          {
-            "type": "heading",
-            "value": "NE100JP エコ・プラグイン自走式クラッシャ"
-          },
-          {
-            "type": "text",
-            "value": "電動式クラッシャNE100JPは、ディーゼル式クラッシャでは対応が難しい現場の課題を解決します。建設廃材はフィードホッパに投入され、ここから破砕工程が始まります。"
-          },
-          {
-            "type": "image",
-            "src": "./files/annotations/ne100jp-overview.jpg",
-            "caption": "<b>NE100JP</b> — Think Big, Start Small, Grow Fast"
-          },
-          {
-            "type": "heading",
-            "value": "このような現場に最適"
-          },
-          {
-            "type": "list",
-            "items": [
-              "騒音に配慮が必要な市街地",
-              "地下工事現場",
-              "ゼロエミッションの取り組み",
-              "環境配慮型の建設プロジェクト",
-              "騒音・排出ガス規制の厳しい屋内作業現場",
-              "早朝・夜間の作業"
-            ]
-          },
-          {
-            "type": "heading",
-            "value": "破砕対象物"
-          },
-          {
-            "type": "image",
-            "src": "./files/annotations/ne100jp-applications.png",
-            "caption": "コンクリート・アスファルト・岩石・レンガ"
-          },
-          {
-            "type": "list",
-            "items": [
-              "処理能力：<b>15～50 t/h</b>",
-              "最大投入寸法（T×W×L）：<b>265 × 330 × 600 mm</b>"
-            ]
-          },
+          // {
+          //   "type": "heading",
+          //   "value": "NE100JP エコ・プラグイン自走式クラッシャ"
+          // },
           {
             "type": "text",
-            "value": "<small>※処理能力は原料の性状・粒度・投入量により異なります。</small>"
-          }
+            "value": "建設廃材はフィードホッパに投入され、ここから破砕工程が始まります。"
+          },
+          // {
+          //   "type": "image",
+          //   "src": "./files/annotations/ne100jp-overview.jpg",
+          //   "caption": "<b>NE100JP</b> — Think Big, Start Small, Grow Fast"
+          // },
+          // {
+          //   "type": "heading",
+          //   "value": "このような現場に最適"
+          // },
+          // {
+          //   "type": "list",
+          //   "items": [
+          //     "騒音に配慮が必要な市街地",
+          //     "地下工事現場",
+          //     "ゼロエミッションの取り組み",
+          //     "環境配慮型の建設プロジェクト",
+          //     "騒音・排出ガス規制の厳しい屋内作業現場",
+          //     "早朝・夜間の作業"
+          //   ]
+          // },
+          // {
+          //   "type": "heading",
+          //   "value": "破砕対象物"
+          // },
+          // {
+          //   "type": "image",
+          //   "src": "./files/annotations/ne100jp-applications.png",
+          //   "caption": "コンクリート・アスファルト・岩石・レンガ"
+          // },
+          // {
+          //   "type": "list",
+          //   "items": [
+          //     "処理能力：<b>15～50 t/h</b>",
+          //     "最大投入寸法（T×W×L）：<b>265 × 330 × 600 mm</b>"
+          //   ]
+          // },
+          // {
+          //   "type": "text",
+          //   "value": "<small>※処理能力は原料の性状・粒度・投入量により異なります。</small>"
+          // }
         ]
       }
     }
@@ -186,7 +186,7 @@ const annotations =
     },
     "labelOffset": {
       "x": -0.43,
-      "y": 3.142,
+      "y": 3.142-0.5,
       "z": -8.025
     },
     "camera": {
@@ -1157,31 +1157,31 @@ const annotations =
             "type": "text",
             "value": "The belt conveyor carries the crushed material out of the NE100JP, passing under the magnetic separator so that metal contaminants are removed before discharge."
           },
-          {
-            "type": "heading",
-            "value": "Compact Recycling System"
-          },
-          {
-            "type": "text",
-            "value": "Boost your recycling efficiency by combining the NE100JP with the <b>NAS1200T Suction Air Separator</b>. This powerful duo optimizes material processing, ensuring high-quality output while maximizing space efficiency and sustainability."
-          },
-          {
-            "type": "image",
-            "src": "./files/annotations/nas1200t-combo-photo.jpg",
-            "caption": "<b>NE100JP</b> crusher combined with the <b>NAS1200T</b> suction air separator"
-          },
-          {
-            "type": "image",
-            "src": "./files/annotations/nas1200t-combo-setup.jpg",
-            "caption": "Combo set-up — both machines fit in 9900 × 9500 mm"
-          },
-          {
-            "type": "list",
-            "items": [
-              "Compact and mobile design, ideal for urban recycling operations",
-              "Both machines are compatible with a <b>60 kVA</b> plug-in power supply, allowing seamless operation from a shared power source"
-            ]
-          }
+          // {
+          //   "type": "heading",
+          //   "value": "Compact Recycling System"
+          // },
+          // {
+          //   "type": "text",
+          //   "value": "Boost your recycling efficiency by combining the NE100JP with the <b>NAS1200T Suction Air Separator</b>. This powerful duo optimizes material processing, ensuring high-quality output while maximizing space efficiency and sustainability."
+          // },
+          // {
+          //   "type": "image",
+          //   "src": "./files/annotations/nas1200t-combo-photo.jpg",
+          //   "caption": "<b>NE100JP</b> crusher combined with the <b>NAS1200T</b> suction air separator"
+          // },
+          // {
+          //   "type": "image",
+          //   "src": "./files/annotations/nas1200t-combo-setup.jpg",
+          //   "caption": "Combo set-up — both machines fit in 9900 × 9500 mm"
+          // },
+          // {
+          //   "type": "list",
+          //   "items": [
+          //     "Compact and mobile design, ideal for urban recycling operations",
+          //     "Both machines are compatible with a <b>60 kVA</b> plug-in power supply, allowing seamless operation from a shared power source"
+          //   ]
+          // }
         ]
       },
       "ja": {
@@ -1194,31 +1194,31 @@ const annotations =
             "type": "text",
             "value": "ベルトコンベヤは破砕された材料をNE100JPから搬出します。途中で磁選機の下を通過するため、排出前に金属異物が除去されます。"
           },
-          {
-            "type": "heading",
-            "value": "コンパクト・リサイクルシステム"
-          },
-          {
-            "type": "text",
-            "value": "NE100JPと<b>NAS1200T 吸引式風力選別機</b>を組み合わせることで、リサイクル効率がさらに向上します。この強力な組み合わせにより処理工程を最適化し、高品質な製品を得ながら、省スペース化と持続可能性を最大限に高めます。"
-          },
-          {
-            "type": "image",
-            "src": "./files/annotations/nas1200t-combo-photo.jpg",
-            "caption": "<b>NE100JP</b>クラッシャと<b>NAS1200T</b>吸引式風力選別機の組み合わせ"
-          },
-          {
-            "type": "image",
-            "src": "./files/annotations/nas1200t-combo-setup.jpg",
-            "caption": "コンボセットアップ — 2台で9900 × 9500 mmに設置可能"
-          },
-          {
-            "type": "list",
-            "items": [
-              "コンパクトで移動しやすい設計のため、都市部でのリサイクル作業に最適",
-              "2台とも<b>60 kVA</b>のプラグイン電源に対応し、共通の電源でスムーズに運転可能"
-            ]
-          }
+          // {
+          //   "type": "heading",
+          //   "value": "コンパクト・リサイクルシステム"
+          // },
+          // {
+          //   "type": "text",
+          //   "value": "NE100JPと<b>NAS1200T 吸引式風力選別機</b>を組み合わせることで、リサイクル効率がさらに向上します。この強力な組み合わせにより処理工程を最適化し、高品質な製品を得ながら、省スペース化と持続可能性を最大限に高めます。"
+          // },
+          // {
+          //   "type": "image",
+          //   "src": "./files/annotations/nas1200t-combo-photo.jpg",
+          //   "caption": "<b>NE100JP</b>クラッシャと<b>NAS1200T</b>吸引式風力選別機の組み合わせ"
+          // },
+          // {
+          //   "type": "image",
+          //   "src": "./files/annotations/nas1200t-combo-setup.jpg",
+          //   "caption": "コンボセットアップ — 2台で9900 × 9500 mmに設置可能"
+          // },
+          // {
+          //   "type": "list",
+          //   "items": [
+          //     "コンパクトで移動しやすい設計のため、都市部でのリサイクル作業に最適",
+          //     "2台とも<b>60 kVA</b>のプラグイン電源に対応し、共通の電源でスムーズに運転可能"
+          //   ]
+          // }
         ]
       }
     }
@@ -1751,7 +1751,7 @@ const annotations =
     },
     "labelOffset": {
       "x": -0.521,
-      "y": 3.359,
+      "y": 3.359-0.4,
       "z": -3.552
     },
     "camera": {
@@ -1917,20 +1917,20 @@ const annotations =
             "type": "text",
             "value": "The crawler makes the NE100JP self-propelled on site, and its compact design keeps the machine easy to move between sites."
           },
-          {
-            "type": "list",
-            "items": [
-              "<b>Controller-based operation:</b> enables smooth control and greater flexibility",
-              "<b>Transportable by a 10-ton truck:</b> compact design for easy mobility",
-              "<b>Compact size:</b> fits into a 40 ft high-cube dry container",
-              "Overall length: <b>8940 mm</b> · Approx. weight: <b>10.2 t</b> (without diesel generator)"
-            ]
-          },
-          {
-            "type": "image",
-            "src": "./files/annotations/ne100jp-transport.png",
-            "caption": "Easy transportation"
-          }
+          // {
+          //   "type": "list",
+          //   "items": [
+          //     "<b>Controller-based operation:</b> enables smooth control and greater flexibility",
+          //     "<b>Transportable by a 10-ton truck:</b> compact design for easy mobility",
+          //     "<b>Compact size:</b> fits into a 40 ft high-cube dry container",
+          //     "Overall length: <b>8940 mm</b> · Approx. weight: <b>10.2 t</b> (without diesel generator)"
+          //   ]
+          // },
+          // {
+          //   "type": "image",
+          //   "src": "./files/annotations/ne100jp-transport.png",
+          //   "caption": "Easy transportation"
+          // }
         ]
       },
       "ja": {
@@ -1943,20 +1943,20 @@ const annotations =
             "type": "text",
             "value": "クローラによりNE100JPは現場内を自走でき、コンパクトな設計により現場間の移動も容易です。"
           },
-          {
-            "type": "list",
-            "items": [
-              "<b>コントローラ操作：</b>スムーズな操作と高い柔軟性",
-              "<b>10トントラックで輸送可能：</b>移動しやすいコンパクト設計",
-              "<b>コンパクトサイズ：</b>40フィートハイキューブドライコンテナに積載可能",
-              "全長：<b>8940 mm</b>・概略重量：<b>10.2 t</b>（ディーゼル発電機なし）"
-            ]
-          },
-          {
-            "type": "image",
-            "src": "./files/annotations/ne100jp-transport.png",
-            "caption": "容易な輸送"
-          }
+          // {
+          //   "type": "list",
+          //   "items": [
+          //     "<b>コントローラ操作：</b>スムーズな操作と高い柔軟性",
+          //     "<b>10トントラックで輸送可能：</b>移動しやすいコンパクト設計",
+          //     "<b>コンパクトサイズ：</b>40フィートハイキューブドライコンテナに積載可能",
+          //     "全長：<b>8940 mm</b>・概略重量：<b>10.2 t</b>（ディーゼル発電機なし）"
+          //   ]
+          // },
+          // {
+          //   "type": "image",
+          //   "src": "./files/annotations/ne100jp-transport.png",
+          //   "caption": "容易な輸送"
+          // }
         ]
       }
     }
@@ -1976,7 +1976,7 @@ const annotations =
     },
     "labelOffset": {
       "x": -0.517,
-      "y": 3.327,
+      "y": 3.327-0.2,
       "z": -2.4
     },
     "camera": {
@@ -2080,12 +2080,12 @@ const annotations =
       "ja": "ベルトコンベヤ"
     },
     "anchor": {
-      "x": -1.732,
+      "x": -1.732-2.5,
       "y": 1.741,
       "z": 1.036
     },
     "labelOffset": {
-      "x": -1.732,
+      "x": -1.732-2.5,
       "y": 2.441,
       "z": 1.036
     },
@@ -4101,19 +4101,19 @@ const annotations =
     "popup": {
       "en": {
         "blocks": [
-          {
-            "type": "heading",
-            "value": "NAS1200T Suction Air Separator Unit"
-          },
-          {
-            "type": "text",
-            "value": "The NAS1200T is a compact and powerful suction air separator unit designed to improve recycling efficiency and deliver high-quality products."
-          },
-          {
-            "type": "image",
-            "src": "./files/annotations/nas1200t-process-flow.jpg",
-            "caption": "Material flow through the NAS1200T"
-          },
+          // {
+          //   "type": "heading",
+          //   "value": "NAS1200T Suction Air Separator Unit"
+          // },
+          // {
+          //   "type": "text",
+          //   "value": "The NAS1200T is a compact and powerful suction air separator unit designed to improve recycling efficiency and deliver high-quality products."
+          // },
+          // {
+          //   "type": "image",
+          //   "src": "./files/annotations/nas1200t-process-flow.jpg",
+          //   "caption": "Material flow through the NAS1200T"
+          // },
           {
             "type": "heading",
             "value": "Belt Conveyor"
@@ -4127,28 +4127,28 @@ const annotations =
             "src": "./files/annotations/nas1200t-final-product.png",
             "caption": "Final product"
           },
-          {
-            "type": "image",
-            "src": "./files/annotations/nas1200t-dimensions.png",
-            "caption": "External dimensions (mm) — <b>①</b> Belt conveyor"
-          }
+          // {
+          //   "type": "image",
+          //   "src": "./files/annotations/nas1200t-dimensions.png",
+          //   "caption": "External dimensions (mm) — <b>①</b> Belt conveyor"
+          // }
         ]
       },
       "ja": {
         "blocks": [
-          {
-            "type": "heading",
-            "value": "NAS1200T 吸引式風力選別ユニット"
-          },
-          {
-            "type": "text",
-            "value": "NAS1200Tは、リサイクル効率を高め高品質な製品を生み出すために設計された、コンパクトかつパワフルな吸引式風力選別ユニットです。"
-          },
-          {
-            "type": "image",
-            "src": "./files/annotations/nas1200t-process-flow.jpg",
-            "caption": "NAS1200T における材料の流れ"
-          },
+          // {
+          //   "type": "heading",
+          //   "value": "NAS1200T 吸引式風力選別ユニット"
+          // },
+          // {
+          //   "type": "text",
+          //   "value": "NAS1200Tは、リサイクル効率を高め高品質な製品を生み出すために設計された、コンパクトかつパワフルな吸引式風力選別ユニットです。"
+          // },
+          // {
+          //   "type": "image",
+          //   "src": "./files/annotations/nas1200t-process-flow.jpg",
+          //   "caption": "NAS1200T における材料の流れ"
+          // },
           {
             "type": "heading",
             "value": "ベルトコンベヤ"
@@ -4162,11 +4162,11 @@ const annotations =
             "src": "./files/annotations/nas1200t-final-product.png",
             "caption": "製品"
           },
-          {
-            "type": "image",
-            "src": "./files/annotations/nas1200t-dimensions.png",
-            "caption": "外形寸法（mm）— <b>①</b> ベルトコンベヤ"
-          }
+          // {
+          //   "type": "image",
+          //   "src": "./files/annotations/nas1200t-dimensions.png",
+          //   "caption": "外形寸法（mm）— <b>①</b> ベルトコンベヤ"
+          // }
         ]
       }
     }
@@ -4186,7 +4186,7 @@ const annotations =
     },
     "labelOffset": {
       "x": -1.555,
-      "y": 2.219,
+      "y": 2.219-0.6,
       "z": 1.613
     },
     "camera": {
@@ -4451,6 +4451,16 @@ const annotations =
           {
             "type": "image",
             "src": "./files/annotations/nas1200t-screen-photos.png",
+            // "caption": "Screen <b>NRE4101</b>"
+          },
+          {
+            "type": "image",
+            "src": "./files/annotations/nas1200t-screen-photos-1.png",
+            // "caption": "Screen <b>NRE4101</b>"
+          },
+          {
+            "type": "image",
+            "src": "./files/annotations/nas1200t-screen-photos-2.png",
             "caption": "Screen <b>NRE4101</b>"
           },
           {
@@ -4481,6 +4491,16 @@ const annotations =
           {
             "type": "image",
             "src": "./files/annotations/nas1200t-screen-photos.png",
+            // "caption": "スクリーン <b>NRE4101</b>"
+          },
+          {
+            "type": "image",
+            "src": "./files/annotations/nas1200t-screen-photos-1.png",
+            // "caption": "スクリーン <b>NRE4101</b>"
+          },
+          {
+            "type": "image",
+            "src": "./files/annotations/nas1200t-screen-photos-2.png",
             "caption": "スクリーン <b>NRE4101</b>"
           },
           {
@@ -6002,8 +6022,8 @@ const annotations =
     "order": 13,
     "group": "NAS1200T",
     "title": {
-      "en": "BLOWER",
-      "ja": "ブロワ"
+      "en": "EXHAUST FAN",
+      "ja": "排気ファン"
     },
     "anchor": {
       "x": 4.553,
@@ -6256,7 +6276,7 @@ const annotations =
           },
           {
             "type": "text",
-            "value": "The blower creates the suction airflow of the NAS1200T. Air drawn through the suction air separator passes the axial flow cyclone before leaving through the exhaust."
+            "value": "The exhaust fan creates the suction airflow of the NAS1200T. Air drawn through the suction air separator passes the axial flow cyclone before leaving through the exhaust."
           },
           {
             "type": "list",
@@ -6285,7 +6305,7 @@ const annotations =
           },
           {
             "type": "text",
-            "value": "ブロワはNAS1200Tの吸引気流を生み出します。吸引式風力選別機から吸い込まれた空気は、軸流サイクロンを通過した後、排気口から排出されます。"
+            "value": "排気ファンはNAS1200Tの吸引気流を生み出します。吸引式風力選別機から吸い込まれた空気は、軸流サイクロンを通過した後、排気口から排出されます。"
           },
           {
             "type": "list",
