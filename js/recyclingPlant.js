@@ -1,7 +1,7 @@
 import * as THREE from "three";
 import { CSS2DObject } from "three/addons/renderers/CSS2DRenderer.js";
 import { scene, camera, orbitControls, frameCallbacks } from "../script.js";
-import { annotations as annotationsData, DEFAULT_VIEW } from "./recyclingPlantAnnotationsStore.js";
+import { annotations as annotationsData, DEFAULT_VIEW, DEFAULT_VIEWS } from "./recyclingPlantAnnotationsStore.js";
 import { initOutline, setOutline, clearOutline } from "./recyclingPlantOutline.js";
 import { setVoiceOverContext } from "./voiceOver.js";
 import { renderPopupBody } from "./recyclingPlantPopup.js";
@@ -341,6 +341,10 @@ function isShown(ann) {
 	return !groupFilter || ann.group === groupFilter;
 }
 
+function getDefaultView() {
+	return (groupFilter && DEFAULT_VIEWS[groupFilter]) || DEFAULT_VIEW;
+}
+
 function setGroupFilter(group) {
 	groupFilter = group;
 	listPopup.classList.toggle("rp-filtered", !!group);
@@ -350,7 +354,9 @@ function setGroupFilter(group) {
 		const hidden = !isShown(entry.ann);
 		[entry.dotEl, entry.labelEl, entry.line].forEach((el) => el?.classList.toggle("rp-marker-hidden", hidden));
 	});
-	if (focusedId && !isShown(markerEntries.get(focusedId).ann)) clearFocus();
+	// A filter always means "overview of this machine": drop any focused part and frame the group.
+	resetView(1.5);
+	document.dispatchEvent(new CustomEvent("groupchange", { detail: group }));
 }
 
 function renderTitles(entry) {
@@ -653,5 +659,6 @@ export function haltCamera() {
 export function resetView(duration = 1.8) {
 	unlockControls();
 	clearFocus();
-	return new Promise((resolve) => flyCamera(DEFAULT_VIEW.position, DEFAULT_VIEW.target, duration, resolve));
+	const view = getDefaultView();
+	return new Promise((resolve) => flyCamera(view.position, view.target, duration, resolve));
 }

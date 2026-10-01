@@ -5,6 +5,7 @@ import {
 	saveProgress,
 	clearProgress,
 	resetToSeed,
+	DEFAULT_VIEWS,
 } from "./recyclingPlantAnnotationsStore.js";
 import { saveAnnotations } from "./recyclingPlantAnnotationsApi.js";
 import { localize } from "./i18n.js";
@@ -364,6 +365,55 @@ function resetCamera() {
 	renderAll();
 }
 
+// -------------------------------- default views (per parts filter) --------------------------------
+
+const roundVec = (v) => ({ x: +v.x.toFixed(3), y: +v.y.toFixed(3), z: +v.z.toFixed(3) });
+
+function goToDefaultView() {
+	const { position, target } = DEFAULT_VIEWS[el.viewGroup.value];
+	camera.position.set(position.x, position.y, position.z);
+	orbitControls.target.set(target.x, target.y, target.z);
+	orbitControls.update();
+}
+
+/** Mutates in place so recyclingPlant.js (and DEFAULT_VIEW, an alias of "all") see the new value at once. */
+function setDefaultView(e) {
+	const view = DEFAULT_VIEWS[el.viewGroup.value];
+	Object.assign(view.position, roundVec(camera.position));
+	Object.assign(view.target, roundVec(orbitControls.target));
+	flashButton(e.currentTarget, "Set ✓");
+}
+
+function formatDefaultViews() {
+	const vec = (v) => `{ x: ${v.x}, y: ${v.y}, z: ${v.z} }`;
+	const body = Object.entries(DEFAULT_VIEWS)
+		.map(([key, v]) => `\t${key}: {\n\t\tposition: ${vec(v.position)},\n\t\ttarget: ${vec(v.target)},\n\t},`)
+		.join("\n");
+	return `export const DEFAULT_VIEWS = {\n${body}\n};`;
+}
+
+async function copyDefaultViews(e) {
+	const btn = e.currentTarget;
+	const text = formatDefaultViews();
+	console.info(`[tagTool] paste into js/recyclingPlantAnnotations.js:\n${text}`);
+	try {
+		await navigator.clipboard.writeText(text);
+		flashButton(btn, "Copied ✓");
+	} catch (err) {
+		alert("Clipboard diblokir browser — snippet DEFAULT_VIEWS ada di console (F12).");
+	}
+}
+
+function flashButton(btn, label) {
+	const original = btn.textContent;
+	btn.disabled = true;
+	btn.textContent = label;
+	setTimeout(() => {
+		btn.textContent = original;
+		btn.disabled = false;
+	}, 1200);
+}
+
 function addAnnotation() {
 	const current = getCurrent();
 	const id = String(Math.max(0, ...store.map((a) => Number(a.id) || 0)) + 1);
@@ -531,6 +581,17 @@ function buildUI() {
 				<input class="rpt-input" id="rpt-filter" placeholder="type mesh name, click to select" />
 				<div class="rpt-flist" id="rpt-flist"></div>
 			</div>
+
+			<div class="rpt-editor">
+				<div class="rpt-block-head"><span>Default view (parts filter)</span></div>
+				<select class="rpt-input" id="rpt-view-group"></select>
+				<div class="rpt-actions">
+					<button class="rpt-btn" id="rpt-view-go">Go to</button>
+					<button class="rpt-btn" id="rpt-view-set">Set from camera</button>
+				</div>
+				<button class="rpt-btn primary" id="rpt-view-copy">Copy DEFAULT_VIEWS</button>
+				<div class="rpt-hint">Paste ke js/recyclingPlantAnnotations.js · nilai hilang saat reload</div>
+			</div>
 		</div>
 		<div class="rpt-foot">
 			<button class="rpt-btn primary" id="rpt-save">${SAVE_LABEL}</button>
@@ -570,6 +631,14 @@ function buildUI() {
 	panel.querySelector("#rpt-save").onclick = saveToFile;
 	panel.querySelector("#rpt-reset").onclick = resetAll;
 	el.filter.addEventListener("input", renderFilter);
+
+	el.viewGroup = panel.querySelector("#rpt-view-group");
+	el.viewGroup.replaceChildren(
+		...Object.keys(DEFAULT_VIEWS).map((key) => new Option(key === "all" ? "All" : key, key))
+	);
+	panel.querySelector("#rpt-view-go").onclick = goToDefaultView;
+	panel.querySelector("#rpt-view-set").onclick = setDefaultView;
+	panel.querySelector("#rpt-view-copy").onclick = copyDefaultViews;
 
 	const collapsed = localStorage.getItem("rptCollapsed") === "1";
 	if (collapsed) panel.classList.add("collapsed");

@@ -1,4 +1,4 @@
-import seedAnnotations, { DEFAULT_VIEW } from "./recyclingPlantAnnotations.js";
+import seedAnnotations, { DEFAULT_VIEW, DEFAULT_VIEWS } from "./recyclingPlantAnnotations.js";
 
 const STORAGE_KEY = "rpAnnotationsTagProgress";
 
@@ -35,4 +35,4 @@ export function resetToSeed() {
 	annotations = cloneSeed();
 }
 
-export { DEFAULT_VIEW };
+export { DEFAULT_VIEW, DEFAULT_VIEWS };

@@ -115,6 +115,9 @@ prevButton.addEventListener("click", () => step(-1));
 nextButton.addEventListener("click", () => step(1));
 stopButton.addEventListener("click", goHome);
 
+// A new parts filter changes the stop list, so the next play/step starts from its first part.
+document.addEventListener("groupchange", () => (index = -1));
+
 document.addEventListener("pointerdown", interrupt, true);
 document.addEventListener("wheel", interrupt, { capture: true, passive: true });
 

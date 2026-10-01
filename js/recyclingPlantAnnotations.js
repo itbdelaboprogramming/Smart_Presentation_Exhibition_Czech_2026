@@ -1,7 +1,19 @@
-export const DEFAULT_VIEW = {
-	position: { x: 8.5, y: 5.5, z: -7.5 },
-	target: { x: 0.6, y: 1.2, z: -3.5 },
+export const DEFAULT_VIEWS = {
+	all: {
+		position: { x: 8.5, y: 5.5, z: -7.5 },
+		target: { x: 0.6, y: 1.2, z: -3.5 },
+	},
+	NE100JP: {
+		position: { x: 6.081, y: 3.806, z: -7.135 },
+		target: { x: 0.215, y: 1.887, z: -5.274 },
+	},
+	NAS1200T: {
+		position: { x: 1.228, y: 3.577, z: 7.873 },
+		target: { x: 0.783, y: 1.386, z: -0.577 },
+	},
 };
+
+export const DEFAULT_VIEW = DEFAULT_VIEWS.all;
 
 const annotations = 
 [
