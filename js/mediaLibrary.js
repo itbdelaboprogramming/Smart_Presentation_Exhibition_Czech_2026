@@ -1,9 +1,9 @@
 import mediaItems from "./mediaItems.js";
 import { t, localize, onLangChange } from "./i18n.js";
+import { createPdfViewer } from "./pdfViewer.js";
 
 const PDFJS_URL = new URL("../vendor/pdfjs/pdf.min.mjs", import.meta.url).href;
 const PDFJS_WORKER_URL = new URL("../vendor/pdfjs/pdf.worker.min.mjs", import.meta.url).href;
-const PDF_VIEW_PARAMS = "#toolbar=0&navpanes=0&view=FitH";
 const THUMB_WIDTH = 480;
 
 const root = document.getElementById("media-library");
@@ -22,6 +22,7 @@ const el = {
 
 const pdfThumbs = new Map();
 let pdfjs = null;
+const pdfViewer = createPdfViewer(el.pdf, loadPdfjs);
 
 let type = null;
 let items = [];
@@ -146,7 +147,7 @@ function unloadMedia() {
 	el.video.pause();
 	el.video.removeAttribute("src");
 	el.video.load();
-	el.pdf.src = "about:blank";
+	pdfViewer.close();
 }
 
 function loadMedia(src) {
@@ -154,7 +155,7 @@ function loadMedia(src) {
 	unloadMedia();
 	loadedSrc = src;
 	if (type === "pdf") {
-		el.pdf.src = src + PDF_VIEW_PARAMS;
+		pdfViewer.open(src).catch((error) => console.error("[mediaLibrary] PDF failed to load", error));
 	} else {
 		el.video.src = src;
 		el.video.play().catch(() => {});

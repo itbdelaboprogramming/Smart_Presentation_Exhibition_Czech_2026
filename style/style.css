@@ -2015,7 +2015,46 @@ canvas {
 	width: 100%;
 	height: 100%;
 	border: none;
+	background: #e9eef1;
+	overflow: auto;
+	overscroll-behavior: contain;
+	touch-action: pan-x pan-y; /* pinch is handled by pdfViewer.js, which clamps the zoom */
+}
+
+/* No browser pinch-zoom anywhere on the overlay while a PDF is open (the PDF zooms itself). */
+.media-library[data-type="pdf"][data-view="viewer"] {
+	touch-action: pan-x pan-y;
+}
+
+.media-pdf.is-zoomed {
+	cursor: grab;
+}
+
+.media-pdf.is-dragging {
+	cursor: grabbing;
+	user-select: none;
+}
+
+.media-pdf-pages {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	width: max-content;
+	min-width: 100%;
+	padding: 12px;
+	box-sizing: border-box;
+}
+
+.media-pdf-page {
+	margin: 0 auto;
 	background: #ffffff;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+}
+
+.media-pdf-page canvas {
+	display: block;
+	width: 100%;
+	height: 100%;
 }
 
 .media-video {

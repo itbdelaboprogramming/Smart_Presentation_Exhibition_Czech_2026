@@ -247,7 +247,7 @@
                             <svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>
                         </button>
                         <div class="media-stage" id="media-stage">
-                            <iframe class="media-pdf" id="media-pdf" title="PDF"></iframe>
+                            <div class="media-pdf" id="media-pdf"></div>
                             <video class="media-video" id="video" controls playsinline></video>
                         </div>
                         <button type="button" class="media-nav" id="media-next" aria-label="Next">
