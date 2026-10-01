@@ -260,6 +260,7 @@ let change_audio = "model_name_1";
 var audio = new Audio("./audio/podcast-18169.mp3");
 
 let audioOwner = null; // "music" | "speech" | "video" | null
+let silencedByVideo = null; // "music" | "speech" | null — turned back on when the video viewer closes
 
 function stopMusic() {
 	audio.pause();
@@ -276,6 +277,13 @@ function stopVideo() {
 }
 
 function claimAudio(owner) {
+	if (owner === "video") {
+		// Remember what the video silences. Keep the old value when moving on to a second video.
+		if (toggle_music.classList.contains("active")) silencedByVideo = "music";
+		else if (toggle_speech.classList.contains("active")) silencedByVideo = "speech";
+	} else {
+		silencedByVideo = null; // the visitor picked music / voice-over themselves
+	}
 	if (owner !== "music") stopMusic();
 	if (owner !== "speech") stopSpeech();
 	if (owner !== "video") stopVideo();
@@ -529,6 +537,13 @@ video_button.addEventListener("click", () => openLibrary("video"));
 video.addEventListener("play", () => claimAudio("video"));
 video.addEventListener("pause", () => releaseAudio("video"));
 video.addEventListener("ended", () => releaseAudio("video"));
+
+// Closing the video viewer brings back the music / voice-over the video had silenced.
+document.addEventListener("mediaclose", () => {
+	const toggle = { music: toggle_music, speech: toggle_speech }[silencedByVideo];
+	silencedByVideo = null;
+	if (toggle && !toggle.classList.contains("active")) toggle.click(); // same path as the visitor's own click
+});
 
 // ---------------------------------------------------------------------------------------
 // ---------------------------------- FUNCTION HELPER ------------------------------------

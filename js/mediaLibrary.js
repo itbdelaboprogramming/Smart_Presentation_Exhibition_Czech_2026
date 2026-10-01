@@ -223,6 +223,7 @@ export function closeMedia() {
 	if (!isOpen()) return;
 	root.classList.remove("active");
 	unloadMedia();
+	document.dispatchEvent(new CustomEvent("mediaclose"));
 }
 
 // ------------------------------------------- events -------------------------------------------
