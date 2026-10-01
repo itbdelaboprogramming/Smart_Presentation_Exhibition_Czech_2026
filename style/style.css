@@ -1239,10 +1239,6 @@ canvas {
 	border-color: #189ab4;
 }
 
-.rp-annotation-dot.rp-occluded {
-	opacity: 0.25;
-}
-
 .rp-annotation-label {
 	display: inline-flex;
 	align-items: center;
@@ -1291,10 +1287,6 @@ canvas {
 
 .rp-annotation-label.rp-dim {
 	opacity: 0.2;
-}
-
-.rp-annotation-label.rp-occluded {
-	opacity: 0.3;
 }
 
 .rp-annotation-label.rp-collapsed {

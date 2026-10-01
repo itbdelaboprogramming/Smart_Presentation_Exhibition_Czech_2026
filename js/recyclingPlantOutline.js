@@ -43,7 +43,16 @@ export function initOutline() {
 		composer.setSize(s.x, s.y);
 	});
 
-	setRenderOverride(() => composer.render());
+	// The composer costs an extra full-screen pass every frame, so only use it while an outline shows.
+	setRenderOverride(() => {
+		if (hasActiveOutline()) composer.render();
+		else renderer.render(scene, camera);
+	});
+}
+
+function hasActiveOutline() {
+	for (const pass of passes.values()) if (pass.selectedObjects.length) return true;
+	return false;
 }
 
 function ensurePass(channel) {

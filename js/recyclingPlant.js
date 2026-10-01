@@ -17,13 +17,10 @@ const infoPopupBadge = document.getElementById("rp-info-popup-badge");
 const infoPopupTitle = document.getElementById("rp-info-popup-title");
 const infoPopupBody = document.getElementById("rp-info-popup-body");
 const infoPopupFooter = document.getElementById("rp-info-popup-footer");
-const ENABLE_OCCLUSION = true;
 const ENABLE_DECLUTTER = false;
-const OCCLUSION_INTERVAL_MS = 250;
 const DECLUTTER_INTERVAL_MS = 120;
 const LABEL_GAP_PX = 4;
 const VISIBLE_LABEL_BONUS = 1.5;
-const OCCLUDED_LABEL_PENALTY = 1000;
 const GHOST_COLOR = 0xe6eef0;
 const GHOST_OPACITY = 1; // 0.3 for see-through, 1 for solid
 const FRAMED_EPSILON = 0.05;
@@ -37,8 +34,6 @@ let meshByName = null;
 let ghostMaterial = null;
 const ghostedMeshes = [];
 
-const occlusionRaycaster = new THREE.Raycaster();
-let lastOcclusionCheck = 0;
 let lastDeclutter = 0;
 let hoveredId = null;
 
@@ -114,10 +109,7 @@ function isFlyable(ann) {
 }
 
 // -------------------------------- leader-line screen-space projection --------------------------------
-function worldToScreen(vector3) {
-	const canvas = document.getElementById("myCanvas");
-	const width = canvas.clientWidth;
-	const height = canvas.clientHeight;
+function worldToScreen(vector3, width, height) {
 	const projected = vector3.clone().project(camera);
 	return {
 		x: (projected.x * 0.5 + 0.5) * width,
@@ -129,10 +121,15 @@ function updateLeaderLines() {
 	const file3D = getFile3D();
 	if (!file3D) return;
 
+	// Read the canvas size once: reading it between the SVG writes below forces a reflow per line.
+	const canvas = document.getElementById("myCanvas");
+	const width = canvas.clientWidth;
+	const height = canvas.clientHeight;
+
 	markerEntries.forEach((entry) => {
 		if (!entry.line) return;
-		const a = worldToScreen(file3D.localToWorld(entry.anchor.clone()));
-		const b = worldToScreen(file3D.localToWorld(entry.labelOffset.clone()));
+		const a = worldToScreen(file3D.localToWorld(entry.anchor.clone()), width, height);
+		const b = worldToScreen(file3D.localToWorld(entry.labelOffset.clone()), width, height);
 		entry.line.setAttribute("x1", a.x);
 		entry.line.setAttribute("y1", a.y);
 		entry.line.setAttribute("x2", b.x);
@@ -140,45 +137,12 @@ function updateLeaderLines() {
 	});
 }
 
-function updateOcclusion(now) {
-	if (now - lastOcclusionCheck < OCCLUSION_INTERVAL_MS) return;
-	lastOcclusionCheck = now;
-
-	const file3D = getFile3D();
-	if (!file3D) return;
-
-	markerEntries.forEach((entry) => {
-		if (!entry.anchor || !entry.dotEl || !isShown(entry.ann)) return;
-
-		const worldAnchor = file3D.localToWorld(entry.anchor.clone());
-		const ndc = worldAnchor.clone().project(camera);
-		const onScreen =
-			ndc.z < 1 && ndc.x >= -1 && ndc.x <= 1 && ndc.y >= -1 && ndc.y <= 1;
-		if (!onScreen) {
-			entry.dotEl.classList.remove("rp-occluded");
-			if (entry.labelEl) entry.labelEl.classList.remove("rp-occluded");
-			return;
-		}
-
-		const dir = worldAnchor.clone().sub(camera.position);
-		const dist = dir.length();
-		dir.normalize();
-		occlusionRaycaster.set(camera.position, dir);
-		const hits = occlusionRaycaster.intersectObject(file3D, true);
-		const occluded = hits.length > 0 && hits[0].distance < dist - 0.4;
-
-		entry.dotEl.classList.toggle("rp-occluded", occluded);
-		if (entry.labelEl) entry.labelEl.classList.toggle("rp-occluded", occluded);
-	});
-}
-
 function labelRank(id, entry, file3D) {
 	if (id === focusedId) return -Infinity;
 	if (id === hoveredId) return -Number.MAX_VALUE;
 	const distance = camera.position.distanceTo(file3D.localToWorld(entry.anchor.clone()));
-	const occluded = entry.labelEl.classList.contains("rp-occluded") ? OCCLUDED_LABEL_PENALTY : 0;
 	const visible = entry.labelEl.classList.contains("rp-collapsed") ? 0 : VISIBLE_LABEL_BONUS;
-	return distance + occluded - visible;
+	return distance - visible;
 }
 
 function overlaps(a, b) {
@@ -224,7 +188,6 @@ frameCallbacks.push(() => {
 	if (!activated) return;
 	const now = performance.now();
 	updateLeaderLines();
-	if (ENABLE_OCCLUSION) updateOcclusion(now);
 	if (ENABLE_DECLUTTER) declutterLabels(now);
 });
 
