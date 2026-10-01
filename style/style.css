@@ -2063,6 +2063,66 @@ canvas {
 	background: #000000;
 }
 
+/* Chrome/Edge still draw a greyed-out fullscreen icon despite controlslist="nofullscreen". */
+.media-video::-webkit-media-controls-fullscreen-button {
+	display: none;
+}
+
+/* Our own fullscreen (the stage, not the bare <video>), so an X button can stay on screen. */
+.media-icon-button.media-fullscreen {
+	display: none;
+}
+
+.media-library[data-type="video"][data-view="viewer"] .media-icon-button.media-fullscreen {
+	display: flex;
+}
+
+.media-stage:fullscreen {
+	position: relative;
+	background: #000000;
+}
+
+.media-stage:fullscreen .media-video {
+	width: 100%;
+	height: 100%;
+	border-radius: 0;
+}
+
+.media-fullscreen-exit {
+	display: none;
+}
+
+.media-stage:fullscreen .media-fullscreen-exit {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	top: 24px;
+	right: 24px;
+	z-index: 1;
+	width: 52px;
+	height: 52px;
+	padding: 0;
+	border: 2px solid rgba(255, 255, 255, 0.7); /* stays visible over black letterbox bars */
+	border-radius: 50%;
+	background: rgba(0, 0, 0, 0.55);
+	cursor: pointer;
+	transition: background-color 0.2s ease;
+}
+
+.media-stage:fullscreen .media-fullscreen-exit:hover {
+	background: rgba(0, 0, 0, 0.8);
+}
+
+.media-fullscreen-exit svg {
+	width: 26px;
+	height: 26px;
+	fill: none;
+	stroke: #ffffff;
+	stroke-width: 2.5;
+	stroke-linecap: round;
+}
+
 .media-library[data-type="pdf"] .media-pdf,
 .media-library[data-type="video"] .media-video {
 	display: block;

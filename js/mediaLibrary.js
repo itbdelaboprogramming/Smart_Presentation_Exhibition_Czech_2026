@@ -12,6 +12,8 @@ const el = {
 	counter: document.getElementById("media-counter"),
 	back: document.getElementById("media-back"),
 	close: document.getElementById("media-close"),
+	fullscreen: document.getElementById("media-fullscreen"),
+	fullscreenExit: document.getElementById("media-fullscreen-exit"),
 	grid: document.getElementById("media-grid"),
 	stage: document.getElementById("media-stage"),
 	prev: document.getElementById("media-prev"),
@@ -142,7 +144,23 @@ function render() {
 
 // ------------------------------------------- media element -------------------------------------------
 
+// The video's own fullscreen only shows the bare <video>, so nothing (like our X) can sit on top of it.
+// Instead the stage goes fullscreen: the video plus an always-visible X button.
+function isFullscreen() {
+	return document.fullscreenElement === el.stage;
+}
+
+function toggleFullscreen() {
+	if (isFullscreen()) document.exitFullscreen();
+	else el.stage.requestFullscreen().catch(() => {});
+}
+
+function exitFullscreen() {
+	if (isFullscreen()) document.exitFullscreen();
+}
+
 function unloadMedia() {
+	exitFullscreen();
 	loadedSrc = null;
 	el.video.pause();
 	el.video.removeAttribute("src");
@@ -213,6 +231,15 @@ el.back.addEventListener("click", backToGrid);
 el.close.addEventListener("click", closeMedia);
 el.prev.addEventListener("click", () => step(-1));
 el.next.addEventListener("click", () => step(1));
+el.fullscreen.addEventListener("click", toggleFullscreen);
+el.fullscreenExit.addEventListener("click", exitFullscreen);
+
+// Double-click would open the browser's bare-video fullscreen; route it to ours. No right-click "Save video as".
+el.video.addEventListener("dblclick", (event) => {
+	event.preventDefault();
+	toggleFullscreen();
+});
+el.video.addEventListener("contextmenu", (event) => event.preventDefault());
 
 root.addEventListener("click", (event) => {
 	if (event.target === root) closeMedia();
@@ -220,7 +247,9 @@ root.addEventListener("click", (event) => {
 
 document.addEventListener("keydown", (event) => {
 	if (!isOpen()) return;
-	if (event.key === "Escape") closeMedia();
+	if (event.key === "Escape") {
+		if (!document.fullscreenElement) closeMedia(); // in fullscreen, Esc only leaves fullscreen
+	}
 	else if (event.target === el.video) return;
 	else if (event.key === "ArrowLeft") step(-1);
 	else if (event.key === "ArrowRight") step(1);

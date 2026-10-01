@@ -237,6 +237,9 @@
                         </button>
                         <div class="media-title" id="media-title"></div>
                         <div class="media-counter" id="media-counter"></div>
+                        <button type="button" class="media-icon-button media-fullscreen" id="media-fullscreen" aria-label="Fullscreen">
+                            <svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>
+                        </button>
                         <button type="button" class="media-icon-button" id="media-close" aria-label="Close">
                             <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>
                         </button>
@@ -248,7 +251,10 @@
                         </button>
                         <div class="media-stage" id="media-stage">
                             <div class="media-pdf" id="media-pdf"></div>
-                            <video class="media-video" id="video" controls playsinline></video>
+                            <video class="media-video" id="video" controls playsinline controlslist="nodownload nofullscreen noremoteplayback" disablepictureinpicture></video>
+                            <button type="button" class="media-fullscreen-exit" id="media-fullscreen-exit" aria-label="Exit fullscreen">
+                                <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>
+                            </button>
                         </div>
                         <button type="button" class="media-nav" id="media-next" aria-label="Next">
                             <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
